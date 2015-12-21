@@ -74,6 +74,7 @@ class _Socket(object):
 def _client_handshake(connection, server_address, callback, key_ring, debug):
     # INIT SESSION
     sock = _Socket(connection, debug=debug)
+    sock.connection.settimeout(10)
     sock.show_debug("connected")
     error_msg = "Handshake failed!"
     # PLAIN TEXT HANDSHAKE
@@ -95,4 +96,5 @@ def _client_handshake(connection, server_address, callback, key_ring, debug):
     sock.session = AES(server_hash, client_hash)
     sock.show_debug("AES cypher session started")
     # BEGIN ENCRYPTED SESSION
+    sock.connection.settimeout(None)
     callback(sock, server_address)
