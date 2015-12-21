@@ -5,7 +5,7 @@ from codecs import open
 from os import path
 
 __author__ = 'Christopher Ohge'
-__version__ = '1.0.0a1'
+__version__ = '0.0.2'
 
 here = path.abspath(path.dirname(__file__))
 
